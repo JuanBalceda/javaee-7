@@ -38,6 +38,12 @@ public class RegisterUserBean implements Serializable{
     public void verifyAvailability(){
         FacesMessage msg = null;
         System.out.println("Verifying availability for: "+this.login);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            //TODO: handle exception
+        }
+
         if(login.equalsIgnoreCase("jbalceda")){
             msg = new FacesMessage("Login not available");
             msg.setSeverity(FacesMessage.SEVERITY_WARN);
