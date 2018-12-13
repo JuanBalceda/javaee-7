@@ -12,6 +12,7 @@ import java.io.Serializable;
 @ViewScoped
 public class StudentBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String name;
 
     @PostConstruct
