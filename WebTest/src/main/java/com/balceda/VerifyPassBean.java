@@ -13,6 +13,7 @@ import java.util.List;
 @ViewScoped
 public class VerifyPassBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String login;
     private String password;
     private String name;
@@ -67,11 +68,11 @@ public class VerifyPassBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile completed"));
     }
 
-    public List<String> autocompleteOptions(String text){
+    public List<String> autocompleteOptions(String text) {
         List<String> list = new ArrayList<>();
 
         // Works with at least 3 characters
-        if (text.startsWith("joa")){
+        if (text.startsWith("joa")) {
             list.add("Joan");
             list.add("Joana");
             list.add("Joa");
