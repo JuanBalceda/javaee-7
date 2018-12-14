@@ -16,26 +16,15 @@
             <p:inputText id="name" required="true" value="#{userBean.name}"/>
 
             <p:outputLabel value="Occupation " for="occupation"/>
-            <p:selectOneListbox id="occupation" required="true" value="#{userBean.occupation}">
+            <p:selectOneMenu id="occupation" required="true" value="#{userBean.occupation}" filter="true" filterMatchMode="startsWith">
                 <f:selectItem itemLabel="Student" itemValue="1"/>
                 <f:selectItem itemLabel="Developer" itemValue="2"/>
                 <f:selectItem itemLabel="Engineer" itemValue="3"/>
                 <f:selectItem itemLabel="System Admin" itemValue="4"/>
                 <f:selectItem itemLabel="Operator" itemValue="5"/>
-            </p:selectOneListbox>
-
-            <p:outputLabel value="Hobby " for="hobby"/>
-            <p:selectOneListbox id="hobby" required="true" value="#{userBean.hobby}" converter="hobbies" var="i">
-                <f:selectItems value="#{userBean.hobbies}" var="hobby" itemLabel="#{hobby.desc}" itemValue="#{hobby}"/>
-                <p:column>
-                    <h:graphicImage library="images" name="#{i.icon}.jpg" />
-                </p:column>
-                <p:column>
-                    <h:outputText value="#{i.desc}" />
-                </p:column>
-            </p:selectOneListbox>
+            </p:selectOneMenu>
         </p:panelGrid>
-        <p:commandButton value="Register" action="#{userBean.updateInfo}" update="@form"/>
+        <p:commandButton value="Register" action="#{userBean.updateOccupation}" update="@form"/>
     </h:form>
 </h:body>
 

@@ -13,7 +13,7 @@ public class HobbyConverter implements Converter {
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
         if (s != null) {
             for (Hobby h : UserBean.hobbies) {
-                if (s.equals(h.getDesc())) {
+                if (s.equals(h.getIcon())) {
                     return h;
                 }
             }
@@ -25,7 +25,7 @@ public class HobbyConverter implements Converter {
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o) {
         if (o != null) {
             Hobby hobby = (Hobby) o;
-            return hobby.getDesc();
+            return hobby.getIcon();
         }
         return null;
     }

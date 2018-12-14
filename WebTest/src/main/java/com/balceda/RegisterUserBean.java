@@ -41,7 +41,7 @@ public class RegisterUserBean implements Serializable{
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            //TODO: handle exception
+            System.out.println("Error at verifyAvailability(): " + e);
         }
 
         if(login.equalsIgnoreCase("jbalceda")){

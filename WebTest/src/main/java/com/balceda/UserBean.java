@@ -24,11 +24,10 @@ public class UserBean implements Serializable {
 
     static {
         hobbies = new ArrayList<>();
-        hobbies.add(new Hobby(1, "Gamer"));
-        hobbies.add(new Hobby(2, "Developer"));
-        hobbies.add(new Hobby(3, "Designer"));
-        hobbies.add(new Hobby(4, "Runner"));
-        hobbies.add(new Hobby(5, "Skater"));
+        hobbies.add(new Hobby(1, "Movies","movies"));
+        hobbies.add(new Hobby(2, "Development", "development"));
+        hobbies.add(new Hobby(3, "Sports", "sports"));
+        hobbies.add(new Hobby(4, "Reading", "reading"));
     }
 
     @PostConstruct
@@ -76,10 +75,6 @@ public class UserBean implements Serializable {
         return hobbies;
     }
 
-    public void setHobbies(List<Hobby> hobbies) {
-        this.hobbies = hobbies;
-    }
-
     public void update() {
         System.out.println("Name: " + name);
         System.out.println("Birthday: " + bornDate);
@@ -88,10 +83,16 @@ public class UserBean implements Serializable {
 
     public void updateInfo() {
         System.out.println("Name: " + name);
+        System.out.println("Ocupation: " + occupation);
         System.out.println("Hobby: " + hobby.getDesc());
-        System.out.println("Hobby: " + hobby.getId());
+        System.out.println("Hobby id: " + hobby.getId());
+        System.out.println("Hobby icon: " + hobby.getIcon());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile updated"));
     }
 
-
+    public void updateOccupation() {
+        System.out.println("Name: " + name);
+        System.out.println("Ocupation: " + occupation);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile updated"));
+    }
 }
