@@ -1,143 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Module III JSF - Joedayz Course</title>
-	<style>
-.ajax-status {
-	width: 35px;
-	height: 35px;
-	position: fixed;
-	right: 10px;
-	top: 60px;
-}
-</style>
-</h:head>
-<h:body>
-	<h1 style="text-align: center;">Partial processing</h1>
-	<!-- Module III Java Server Faces - Class 03 Partial processing -->
-	<br />
-	<h:form>
-		<h2>Example 6: Partial processing</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
-			<p:outputLabel value="Login" for="loginPartial" />
-			<h:panelGroup>
-				<p:inputText id="loginPartial" required="true"
-					value="#{registerUserBean.login}" />
-				<p:commandButton value="Verify availability"
-					action="#{registerUserBean.verifyAvailability}"
-					process="loginPartial @this" />
-			</h:panelGroup>
-			<p:outputLabel value="Name" for="namePartial" />
-			<p:inputText id="namePartial" required="true"
-				value="#{registerUserBean.name}" />
-		</p:panelGrid>
-		<p:commandButton value="Register"
-			action="#{registerUserBean.register}" />
-	</h:form>
 
-	<br />
-	<h:form>
-		<h2>Example 7: Partial processing with ajax event</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
-			<p:outputLabel value="Login" for="loginEvent" />
-			<h:panelGroup>
-				<p:inputText id="loginEvent" required="true"
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+	<ui:define name="content">
+		<h1 style="text-align: center;">Partial processing</h1>
+		<!-- Module III Java Server Faces - Class 03 Partial processing -->
+		<br />
+		<h:form>
+			<h2>Example 6: Partial processing</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Login" for="loginPartial" />
+				<h:panelGroup>
+					<p:inputText id="loginPartial" required="true"
+						value="#{registerUserBean.login}" />
+					<p:commandButton value="Verify availability"
+						action="#{registerUserBean.verifyAvailability}"
+						process="loginPartial @this" />
+				</h:panelGroup>
+				<p:outputLabel value="Name" for="namePartial" />
+				<p:inputText id="namePartial" required="true"
+					value="#{registerUserBean.name}" />
+			</p:panelGrid>
+			<p:commandButton value="Register"
+				action="#{registerUserBean.register}" />
+		</h:form>
+
+		<br />
+		<h:form>
+			<h2>Example 7: Partial processing with ajax event</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Login" for="loginEvent" />
+				<h:panelGroup>
+					<p:inputText id="loginEvent" required="true"
+						value="#{registerUserBean.login}">
+						<p:ajax listener="#{registerUserBean.verifyAvailability}"
+							event="change" process="@this" />
+					</p:inputText>
+				</h:panelGroup>
+				<p:outputLabel value="Name" for="nameEvent" />
+				<p:inputText id="nameEvent" required="true"
+					value="#{registerUserBean.name}" />
+			</p:panelGrid>
+			<p:commandButton value="Register"
+				action="#{registerUserBean.register}" />
+		</h:form>
+
+		<br />
+		<h:form>
+			<h2>Example 8: Partial sending</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+
+				<p:outputLabel value="Login" for="loginPartialSending" />
+				<p:inputText id="loginPartialSending" required="true"
 					value="#{registerUserBean.login}">
 					<p:ajax listener="#{registerUserBean.verifyAvailability}"
-						event="change" process="@this" />
+						event="change" process="@this" partialSubmit="true" />
 				</p:inputText>
-			</h:panelGroup>
-			<p:outputLabel value="Name" for="nameEvent" />
-			<p:inputText id="nameEvent" required="true"
-				value="#{registerUserBean.name}" />
-		</p:panelGrid>
-		<p:commandButton value="Register"
-			action="#{registerUserBean.register}" />
-	</h:form>
 
-	<br />
-	<h:form>
-		<h2>Example 8: Partial sending</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
+				<p:outputLabel value="Name" for="namePartialSending" />
+				<p:inputText id="namePartialSending" required="true"
+					value="#{registerUserBean.name}" />
+			</p:panelGrid>
+			<p:commandButton value="Register"
+				action="#{registerUserBean.register}" />
+		</h:form>
 
-			<p:outputLabel value="Login" for="loginPartialSending" />
-			<p:inputText id="loginPartialSending" required="true"
-				value="#{registerUserBean.login}">
-				<p:ajax listener="#{registerUserBean.verifyAvailability}"
-					event="change" process="@this" partialSubmit="true" />
-			</p:inputText>
+		<h1 style="text-align: center;">AjaxStatus notifications</h1>
+		<!-- Module III Java Server Faces - Class 03 AjaxStatus notifications -->
+		<br />
+		<h:form>
+			<h2>Example 09: AjaxStatus using JSF Core</h2>
+			<p:ajaxStatus styleClass="ajax-status">
+				<f:facet name="start">
+					<h:graphicImage library="images" name="loading.gif"></h:graphicImage>
+				</f:facet>
+				<f:facet name="complete">
+				</f:facet>
+			</p:ajaxStatus>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Login" for="login" />
+				<h:panelGroup>
+					<p:inputText id="login" required="true"
+						value="#{registerUserBean.login}">
+						<p:ajax listener="#{registerUserBean.verifyAvailability}"
+							event="change" process="@this" />
+					</p:inputText>
+				</h:panelGroup>
+				<p:outputLabel value="Name" for="name" />
+				<p:inputText id="name" required="true"
+					value="#{registerUserBean.name}" />
+			</p:panelGrid>
+			<p:commandButton value="Register"
+				action="#{registerUserBean.register}" />
+		</h:form>
 
-			<p:outputLabel value="Name" for="namePartialSending" />
-			<p:inputText id="namePartialSending" required="true"
-				value="#{registerUserBean.name}" />
-		</p:panelGrid>
-		<p:commandButton value="Register"
-			action="#{registerUserBean.register}" />
-	</h:form>
+		<br />
+		<h:form>
+			<h2>Example 10: AjaxStatus using JavaScript</h2>
 
-	<h1 style="text-align: center;">AjaxStatus notifications</h1>
-	<!-- Module III Java Server Faces - Class 03 AjaxStatus notifications -->
-	<br />
-	<h:form>
-		<h2>Example 09: AjaxStatus using JSF Core</h2>
-		<p:ajaxStatus styleClass="ajax-status">
-			<f:facet name="start">
-				<h:graphicImage library="images" name="loading.gif"></h:graphicImage>
-			</f:facet>
-			<f:facet name="complete">
-			</f:facet>
-		</p:ajaxStatus>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
-			<p:outputLabel value="Login" for="login" />
-			<h:panelGroup>
-				<p:inputText id="login" required="true"
-					value="#{registerUserBean.login}">
-					<p:ajax listener="#{registerUserBean.verifyAvailability}"
-						event="change" process="@this" />
-				</p:inputText>
-			</h:panelGroup>
-			<p:outputLabel value="Name" for="name" />
-			<p:inputText id="name" required="true"
-				value="#{registerUserBean.name}" />
-		</p:panelGrid>
-		<p:commandButton value="Register"
-			action="#{registerUserBean.register}" />
-	</h:form>
-
-	<br />
-	<h:form>
-		<h2>Example 10: AjaxStatus using JavaScript</h2>
-
-		<p:ajaxStatus styleClass="ajax-status"
-			onstart="$('.statusJS').css('background-color', '#FFEB3B')"
-			oncomplete="$('.statusJS').css('background-color', '#8BC34A')" />
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
-			<p:outputLabel value="Login" for="loginJS" />
-			<h:panelGroup>
-				<p:inputText id="loginJS" required="true" styleClass="statusJS"
-					value="#{registerUserBean.login}">
-					<p:ajax listener="#{registerUserBean.verifyAvailability}"
-						event="change" process="@this" />
-				</p:inputText>
-			</h:panelGroup>
-			<p:outputLabel value="Name" for="nameJS" />
-			<p:inputText id="nameJS" required="true" styleClass="statusJS"
-				value="#{registerUserBean.name}" />
-		</p:panelGrid>
-		<p:commandButton value="Register"
-			action="#{registerUserBean.register}" />
-	</h:form>
-</h:body>
+			<p:ajaxStatus styleClass="ajax-status"
+				onstart="$('.statusJS').css('background-color', '#FFEB3B')"
+				oncomplete="$('.statusJS').css('background-color', '#8BC34A')" />
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Login" for="loginJS" />
+				<h:panelGroup>
+					<p:inputText id="loginJS" required="true" styleClass="statusJS"
+						value="#{registerUserBean.login}">
+						<p:ajax listener="#{registerUserBean.verifyAvailability}"
+							event="change" process="@this" />
+					</p:inputText>
+				</h:panelGroup>
+				<p:outputLabel value="Name" for="nameJS" />
+				<p:inputText id="nameJS" required="true" styleClass="statusJS"
+					value="#{registerUserBean.name}" />
+			</p:panelGrid>
+			<p:commandButton value="Register"
+				action="#{registerUserBean.register}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

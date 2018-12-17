@@ -1,164 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Module III JSF - Joedayz Course</title>
-	<style>
-.ajax-status {
-	width: 35px;
-	height: 35px;
-	position: fixed;
-	right: 10px;
-	top: 60px;
-}
-</style>
-</h:head>
-<h:body>
-	<h1 style="text-align: center;">Working with component</h1>
-	<!-- Module III Java Server Faces - Class 03 Passwords component -->
-	<h:form>
-		<h2>Example 11: Verifying password</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
-			<p:outputLabel value="Login" for="loginCheck" />
-			<p:inputText id="loginCheck" required="true"
-				value="#{verifyPassBean.login}" />
 
-			<p:outputLabel value="Password" for="passCheck" />
-			<p:password id="passCheck" required="true"
-				value="#{verifyPassBean.password}" feedback="true" weakLabel="Week"
-				goodLabel="Good" strongLabel="Strong"
-				promptLabel="Enter your password" inline="true"
-				match="confirmPassCheck" />
+<ui:composition template="/WEB-INF/layout/template.xhtml">
+	<ui:define name="content">
+		<h1 style="text-align: center;">Working with component</h1>
+		<!-- Module III Java Server Faces - Class 03 Passwords component -->
+		<h:form>
+			<h2>Example 11: Verifying password</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Login" for="loginCheck" />
+				<p:inputText id="loginCheck" required="true"
+					value="#{verifyPassBean.login}" />
 
-			<p:outputLabel value="Confirm Password" for="confirmPassCheck" />
-			<p:password id="confirmPassCheck" required="true" />
-		</p:panelGrid>
-		<p:commandButton value="Register" action="#{verifyPassBean.register}" />
-	</h:form>
+				<p:outputLabel value="Password" for="passCheck" />
+				<p:password id="passCheck" required="true"
+					value="#{verifyPassBean.password}" feedback="true" weakLabel="Week"
+					goodLabel="Good" strongLabel="Strong"
+					promptLabel="Enter your password" inline="true"
+					match="confirmPassCheck" />
 
-	<br />
-	<h:form>
-		<h2>Example 12: Profile text area</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
-			<p:outputLabel value="About you" for="about" />
-			<h:panelGroup>
-				<p:inputTextarea id="about" required="true"
-					value="#{verifyPassBean.about}" cols="48" rows="4"
-					autoResize="false" maxlength="140" counter="count"
-					counterTemplate="Characters: {0}"
-					completeMethod="#{verifyPassBean.autocompleteOptions}" />
-				<br />
-				<p:outputLabel id="count" />
-			</h:panelGroup>
-		</p:panelGrid>
-		<p:commandButton value="Register"
-			action="#{verifyPassBean.updateProfile}" />
-	</h:form>
+				<p:outputLabel value="Confirm Password" for="confirmPassCheck" />
+				<p:password id="confirmPassCheck" required="true" />
+			</p:panelGrid>
+			<p:commandButton value="Register" action="#{verifyPassBean.register}" />
+		</h:form>
 
-	<br />
-	<h:form>
-		<h2>Example 13: Calendar component</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
-			<p:outputLabel value="Date " for="bornDate" />
-			<p:calendar id="bornDate" required="true"
-				value="#{userBean.bornDate}" pattern="dd/MM/yyyy"
-				readonlyInput="true" navigator="false" pages="1" mode="popup"
-				locale="es" />
-		</p:panelGrid>
-		<p:commandButton value="Register" action="#{userBean.update}" />
-	</h:form>
+		<br />
+		<h:form>
+			<h2>Example 12: Profile text area</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="About you" for="about" />
+				<h:panelGroup>
+					<p:inputTextarea id="about" required="true"
+						value="#{verifyPassBean.about}" cols="48" rows="4"
+						autoResize="false" maxlength="140" counter="count"
+						counterTemplate="Characters: {0}"
+						completeMethod="#{verifyPassBean.autocompleteOptions}" />
+					<br />
+					<p:outputLabel id="count" />
+				</h:panelGroup>
+			</p:panelGrid>
+			<p:commandButton value="Register"
+				action="#{verifyPassBean.updateProfile}" />
+		</h:form>
 
-	<br />
-	<h:form>
-		<h2>Example 14: SelectOneListbox component</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2">
+		<br />
+		<!-- Module III Java Server Faces - Class 04 Passwords component -->
+		<h:form>
+			<h2>Example 13: Calendar component</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Date " for="bornDate" />
+				<p:calendar id="bornDate" required="true"
+					value="#{userBean.bornDate}" pattern="dd/MM/yyyy"
+					readonlyInput="true" navigator="false" pages="1" mode="popup"
+					locale="es" />
+			</p:panelGrid>
+			<p:commandButton value="Register" action="#{userBean.update}" />
+		</h:form>
 
-			<p:outputLabel value="Occupation " for="occupation" />
-			<p:selectOneListbox id="occupation" required="true"
-				value="#{userBean.occupation}">
-				<f:selectItem itemLabel="Student" itemValue="1" />
-				<f:selectItem itemLabel="Developer" itemValue="2" />
-				<f:selectItem itemLabel="Engineer" itemValue="3" />
-				<f:selectItem itemLabel="System Admin" itemValue="4" />
-				<f:selectItem itemLabel="Operator" itemValue="5" />
-			</p:selectOneListbox>
+		<br />
+		<h:form>
+			<h2>Example 14: SelectOneListbox component</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2">
 
-			<p:outputLabel value="Hobby " for="hobby" />
-			<p:selectOneListbox id="hobby" required="true"
-				value="#{userBean.hobby}" converter="hobbies" var="i">
-				<f:selectItems value="#{userBean.hobbies}" var="hobby"
-					itemLabel="#{hobby.desc}" itemValue="#{hobby}" />
-				<p:column>
-					<h:graphicImage library="images" name="#{i.icon}.jpg" />
-				</p:column>
-				<p:column>
-					<h:outputText value="#{i.desc}" />
-				</p:column>
-			</p:selectOneListbox>
-		</p:panelGrid>
-		<p:commandButton value="Register" action="#{userBean.updateInfo}"
-			update="@form" />
-	</h:form>
+				<p:outputLabel value="Occupation " for="occupation" />
+				<p:selectOneListbox id="occupation" required="true"
+					value="#{userBean.occupation}">
+					<f:selectItem itemLabel="Student" itemValue="1" />
+					<f:selectItem itemLabel="Developer" itemValue="2" />
+					<f:selectItem itemLabel="Engineer" itemValue="3" />
+					<f:selectItem itemLabel="System Admin" itemValue="4" />
+					<f:selectItem itemLabel="Operator" itemValue="5" />
+				</p:selectOneListbox>
 
-	<br />
-	<h:form>
-		<h2>Example 14: SelectOneMenu component</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2" layout="grid">
-			<p:outputLabel value="Occupation " for="occupationMenu" />
-			<p:selectOneMenu id="occupationMenu" required="true"
-				value="#{userBean.occupation}" filter="true"
-				filterMatchMode="startsWith">
-				<f:selectItem itemLabel="Student" itemValue="1" />
-				<f:selectItem itemLabel="Developer" itemValue="2" />
-				<f:selectItem itemLabel="Engineer" itemValue="3" />
-				<f:selectItem itemLabel="System Admin" itemValue="4" />
-				<f:selectItem itemLabel="Operator" itemValue="5" />
-			</p:selectOneMenu>
-		</p:panelGrid>
-		<p:commandButton value="Register"
-			action="#{userBean.updateOccupation}" update="@form" />
-	</h:form>
+				<p:outputLabel value="Hobby " for="hobby" />
+				<p:selectOneListbox id="hobby" required="true"
+					value="#{userBean.hobby}" converter="hobbies" var="i">
+					<f:selectItems value="#{userBean.hobbies}" var="hobby"
+						itemLabel="#{hobby.desc}" itemValue="#{hobby}" />
+					<p:column>
+						<h:graphicImage library="images" name="#{i.icon}.jpg" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{i.desc}" />
+					</p:column>
+				</p:selectOneListbox>
+			</p:panelGrid>
+			<p:commandButton value="Register" action="#{userBean.updateInfo}"
+				update="@form" />
+		</h:form>
 
-	<br />
-	<h:form>
-		<h2>Example 15: SelectOneListbox component</h2>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid columns="2" layout="grid">
-			<p:outputLabel value="Zone" for="zone" />
-			<p:selectOneListbox id="zone" required="true"
-				value="#{userBean.zone}">
-				<p:ajax event="change" process="@this" update="city"
-					listener="#{userBean.loadCities}" />
-				<f:selectItem itemLabel="Select your zone" />
-				<f:selectItems value="#{userBean.zones}" var="zone"
-					itemLabel="#{zone}" itemValue="#{zone}" />
-			</p:selectOneListbox>
+		<br />
+		<h:form>
+			<h2>Example 14: SelectOneMenu component</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2" layout="grid">
+				<p:outputLabel value="Occupation " for="occupationMenu" />
+				<p:selectOneMenu id="occupationMenu" required="true"
+					value="#{userBean.occupation}" filter="true"
+					filterMatchMode="startsWith">
+					<f:selectItem itemLabel="Student" itemValue="1" />
+					<f:selectItem itemLabel="Developer" itemValue="2" />
+					<f:selectItem itemLabel="Engineer" itemValue="3" />
+					<f:selectItem itemLabel="System Admin" itemValue="4" />
+					<f:selectItem itemLabel="Operator" itemValue="5" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+			<p:commandButton value="Register"
+				action="#{userBean.updateOccupation}" update="@form" />
+		</h:form>
 
-			<p:outputLabel value="City" for="city" />
-			<p:selectOneListbox id="city" required="true"
-				value="#{userBean.city}">
-				<f:selectItem itemLabel="Select your city" />
-				<f:selectItems value="#{userBean.cities}" var="city"
-					itemLabel="#{city}" itemValue="#{city}" />
-			</p:selectOneListbox>
-		</p:panelGrid>
-		<p:commandButton value="Register" action="#{userBean.updateLocation}"
-			update="@form" />
-	</h:form>
+		<br />
+		<h:form>
+			<h2>Example 15: SelectOneListbox component</h2>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid columns="2" layout="grid">
+				<p:outputLabel value="Zone" for="zone" />
+				<p:selectOneListbox id="zone" required="true"
+					value="#{userBean.zone}">
+					<p:ajax event="change" process="@this" update="city"
+						listener="#{userBean.loadCities}" />
+					<f:selectItem itemLabel="Select your zone" />
+					<f:selectItems value="#{userBean.zones}" var="zone"
+						itemLabel="#{zone}" itemValue="#{zone}" />
+				</p:selectOneListbox>
 
-	<!-- JavaScript for Spanish calendar component  -->
-	<script type="text/javascript">
+				<p:outputLabel value="City" for="city" />
+				<p:selectOneListbox id="city" required="true"
+					value="#{userBean.city}">
+					<f:selectItem itemLabel="Select your city" />
+					<f:selectItems value="#{userBean.cities}" var="city"
+						itemLabel="#{city}" itemValue="#{city}" />
+				</p:selectOneListbox>
+			</p:panelGrid>
+			<p:commandButton value="Register" action="#{userBean.updateLocation}"
+				update="@form" />
+		</h:form>
+
+		<!-- JavaScript for Spanish calendar component  -->
+		<script type="text/javascript">
         PrimeFaces.locales["es"] = {
             closeText: "Cerrar",
             prevText: "Anterior",
@@ -186,5 +176,6 @@
             allDayText: "Todo el día"
         };
     </script>
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
