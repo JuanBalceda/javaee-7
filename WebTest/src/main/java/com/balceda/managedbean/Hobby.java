@@ -1,4 +1,4 @@
-package com.balceda;
+package com.balceda.managedbean;
 
 import java.io.Serializable;
 
@@ -13,32 +13,32 @@ public class Hobby implements Serializable {
     }
 
     public Hobby(int id, String desc, String icon) {
-        this.id = id;
-        this.desc = desc;
-        this.icon = icon;
+	this.id = id;
+	this.desc = desc;
+	this.icon = icon;
     }
 
     public int getId() {
-        return id;
+	return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+	this.id = id;
     }
 
     public String getDesc() {
-        return desc;
+	return desc;
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+	this.desc = desc;
     }
 
     public String getIcon() {
-        return icon;
+	return icon;
     }
 
     public void setIcon(String icon) {
-        this.icon = icon;
+	this.icon = icon;
     }
 }

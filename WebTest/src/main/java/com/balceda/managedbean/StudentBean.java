@@ -1,4 +1,4 @@
-package com.balceda;
+package com.balceda.managedbean;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

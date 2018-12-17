@@ -44,8 +44,8 @@
 				<br />
 				<h:outputText id="reverseWord" value="#{reversedBean.reversedWord}" />
 				<br />
-				<p:commandButton value="Reverse" action="#{reversedBean.reverse}"
-					update="reverseWord" />
+				<p:commandButton value="Reverse"
+					action="#{reversedController.reverse}" update="reverseWord" />
 			</p:panelGrid>
 		</h:form>
 
@@ -58,8 +58,8 @@
 				<h:outputLabel value="Name" for="wordAjax" />
 				<p:inputText id="wordAjax" required="true"
 					value="#{reversedBean.word}">
-					<p:ajax listener="#{reversedBean.reverse}" update="reverseWordAjax"
-						event="keyup" />
+					<p:ajax listener="#{reversedController.reverse}"
+						update="reverseWordAjax" event="keyup" />
 				</p:inputText>
 				<br />
 				<h:outputText id="reverseWordAjax"
@@ -75,7 +75,7 @@
 				<h:outputLabel value="Name" for="wordForm" />
 				<p:inputText id="wordForm" required="true"
 					value="#{reversedBean.word}">
-					<p:ajax listener="#{reversedBean.reverse}"
+					<p:ajax listener="#{reversedController.reverse}"
 						update=":form2:reverseWordForm" event="keyup" />
 				</p:inputText>
 			</p:panelGrid>
@@ -94,7 +94,7 @@
 				<h:outputLabel value="Name" for="wordUpdate" />
 				<p:inputText id="wordUpdate" required="true"
 					value="#{reversedBean.word}">
-					<p:ajax listener="#{reversedBean.reverse}"
+					<p:ajax listener="#{reversedController.reverse}"
 						update="reverseWordUpdate wordAmount" event="keyup" />
 				</p:inputText>
 				<br />

@@ -29,7 +29,7 @@
 				<p:outputLabel value="Confirm Password" for="confirmPassCheck" />
 				<p:password id="confirmPassCheck" required="true" />
 			</p:panelGrid>
-			<p:commandButton value="Register" action="#{verifyPassBean.register}" />
+			<p:commandButton value="Register" action="#{verifyPassController.register}" />
 		</h:form>
 
 		<br />
@@ -43,13 +43,13 @@
 						value="#{verifyPassBean.about}" cols="48" rows="4"
 						autoResize="false" maxlength="140" counter="count"
 						counterTemplate="Characters: {0}"
-						completeMethod="#{verifyPassBean.autocompleteOptions}" />
+						completeMethod="#{verifyPassController.autocompleteOptions}" />
 					<br />
 					<p:outputLabel id="count" />
 				</h:panelGroup>
 			</p:panelGrid>
 			<p:commandButton value="Register"
-				action="#{verifyPassBean.updateProfile}" />
+				action="#{verifyPassController.updateProfile}" />
 		</h:form>
 
 		<br />
@@ -64,7 +64,7 @@
 					readonlyInput="true" navigator="false" pages="1" mode="popup"
 					locale="es" />
 			</p:panelGrid>
-			<p:commandButton value="Register" action="#{userBean.update}" />
+			<p:commandButton value="Register" action="#{userController.update}" />
 		</h:form>
 
 		<br />
@@ -96,7 +96,7 @@
 					</p:column>
 				</p:selectOneListbox>
 			</p:panelGrid>
-			<p:commandButton value="Register" action="#{userBean.updateInfo}"
+			<p:commandButton value="Register" action="#{userController.updateInfo}"
 				update="@form" />
 		</h:form>
 
@@ -117,7 +117,7 @@
 				</p:selectOneMenu>
 			</p:panelGrid>
 			<p:commandButton value="Register"
-				action="#{userBean.updateOccupation}" update="@form" />
+				action="#{userController.updateOccupation}" update="@form" />
 		</h:form>
 
 		<br />
@@ -129,7 +129,7 @@
 				<p:selectOneListbox id="zone" required="true"
 					value="#{userBean.zone}">
 					<p:ajax event="change" process="@this" update="city"
-						listener="#{userBean.loadCities}" />
+						listener="#{userController.loadCities}" />
 					<f:selectItem itemLabel="Select your zone" />
 					<f:selectItems value="#{userBean.zones}" var="zone"
 						itemLabel="#{zone}" itemValue="#{zone}" />
@@ -143,7 +143,7 @@
 						itemLabel="#{city}" itemValue="#{city}" />
 				</p:selectOneListbox>
 			</p:panelGrid>
-			<p:commandButton value="Register" action="#{userBean.updateLocation}"
+			<p:commandButton value="Register" action="#{userController.updateLocation}"
 				update="@form" />
 		</h:form>
 
