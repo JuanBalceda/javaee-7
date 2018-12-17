@@ -3,28 +3,107 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Java Server Faces - Course</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Module III JSF - Joedayz Course</title>
 </h:head>
 <h:body>
-    <h:form>
-        <p:messages/>
-        <p:panelGrid columns="2">
-            <f:facet name="header">
-                <p:outputLabel value="University" />
-            </f:facet>
+	<h1 style="text-align: center;">Introduction and Basic form
+		manipulation</h1>
+	<!-- Module III Java Server Faces - Class 01 Introduction -->
+	<h:form>
+		<p:messages />
+		<h2>Example 01: Print data on console</h2>
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<p:outputLabel value="University" />
+			</f:facet>
 
-            <h:outputLabel value="Name" for="name"/>
-            <p:inputText id="name" required="true" value="#{studentBean.name}"/>
+			<h:outputLabel value="Name" for="name" />
+			<p:inputText id="name" required="true" value="#{studentBean.name}" />
 
-            <f:facet name="footer">
-                <p:commandButton value="Register Student" icon="ui-icon-disk" iconPos="right" action="#{studentBean.register}"/>
-            </f:facet>
-        </p:panelGrid>
-    </h:form>
+			<f:facet name="footer">
+				<p:commandButton value="Register Student" icon="ui-icon-disk"
+					iconPos="right" action="#{studentBean.register}" />
+			</f:facet>
+		</p:panelGrid>
+	</h:form>
+
+	<h1 style="text-align: center;">Basic form manipulation </h1>
+	<!-- Module III Java Server Faces - Class 02 Basic form examples -->
+	<br />
+	<h:form>
+		<p:messages />
+		<h2>Example 02: Reverse word</h2>
+		<p:panelGrid columns="2">
+
+			<h:outputLabel value="Name" for="word" />
+			<p:inputText id="word" required="true" value="#{reversedBean.word}" />
+			<br />
+			<h:outputText id="reverseWord" value="#{reversedBean.reversedWord}" />
+			<br />
+			<p:commandButton value="Reverse" action="#{reversedBean.reverse}"
+				update="reverseWord" />
+		</p:panelGrid>
+	</h:form>
+
+	<br />
+	<h:form>
+		<p:messages />
+		<h2>Example 03: Ajax event reverse word</h2>
+		<p:panelGrid columns="2">
+
+			<h:outputLabel value="Name" for="wordAjax" />
+			<p:inputText id="wordAjax" required="true"
+				value="#{reversedBean.word}">
+				<p:ajax listener="#{reversedBean.reverse}" update="reverseWordAjax"
+					event="keyup" />
+			</p:inputText>
+			<br />
+			<h:outputText id="reverseWordAjax"
+				value="#{reversedBean.reversedWord}" />
+		</p:panelGrid>
+	</h:form>
+
+	<br />
+	<h:form id="form1">
+		<p:messages />
+		<h2>Example 04: Forms reverse word</h2>
+		<p:panelGrid columns="2">
+			<h:outputLabel value="Name" for="wordForm" />
+			<p:inputText id="wordForm" required="true"
+				value="#{reversedBean.word}">
+				<p:ajax listener="#{reversedBean.reverse}"
+					update=":form2:reverseWordForm" event="keyup" />
+			</p:inputText>
+		</p:panelGrid>
+	</h:form>
+	<h:form id="form2">
+		<p:outputLabel style="margin-top:10px" id="reverseWordForm"
+			value="#{reversedBean.reversedWord}" />
+	</h:form>
+
+	<br />
+	<h:form>
+		<h2>Example 05: Update reverse word + Word counting</h2>
+		<p:messages />
+		<p:panelGrid columns="2">
+
+			<h:outputLabel value="Name" for="wordUpdate" />
+			<p:inputText id="wordUpdate" required="true"
+				value="#{reversedBean.word}">
+				<p:ajax listener="#{reversedBean.reverse}"
+					update="reverseWordUpdate wordAmount" event="keyup" />
+			</p:inputText>
+			<br />
+			<h:outputText id="reverseWordUpdate"
+				value="#{reversedBean.reversedWord}" />
+			<br />
+			<h:outputText id="wordAmount" value="#{reversedBean.wordAmount}" />
+		</p:panelGrid>
+	</h:form>
 </h:body>
 </html>
