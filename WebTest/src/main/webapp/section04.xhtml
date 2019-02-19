@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/WEB-INF/layout/template.xhtml">
-	<ui:define name="content">
-		<h1 style="text-align: center;">Working with component</h1>
-		<!-- Module III Java Server Faces - Class 05 Passwords component -->
-		<h:form>
-			
-		</h:form>
-	</ui:define>
+    <ui:define name="content">
+        <h1 style="text-align: center;">Working with component</h1>
+        <!-- Module III Java Server Faces - Class 05 Passwords component -->
+        <h:form>
+            <p:timeline id="timeline" value="#{customTimelineView.model}"
+                        editable="true" eventMargin="10" eventMarginAxis="0"
+                        start="#{customTimelineView.start}"
+                        end="#{customTimelineView.end}"
+                        showNavigation="true" showButtonNew="true"
+                        axisOnTop="true" stackEvents="false">
+
+            </p:timeline>
+        </h:form>
+    </ui:define>
 </ui:composition>
 </html>
